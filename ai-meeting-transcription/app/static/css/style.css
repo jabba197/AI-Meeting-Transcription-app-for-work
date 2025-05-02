@@ -169,6 +169,29 @@ button:disabled {
     line-height: 1.7;
 }
 
+/* Remove extra space below list items in summary */
+#summary-text ul li p {
+    margin-bottom: 0;
+}
+
+/* Style for the copy button */
+.copy-button {
+    background-color: #e0e0e0;
+    color: #333;
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    float: right; /* Position to the top right */
+    margin-left: 10px; /* Add some space if needed */
+    transition: background-color 0.2s;
+}
+
+.copy-button:hover {
+    background-color: #d0d0d0;
+}
+
 /* Context section */
 .context-info {
     margin-bottom: 15px;

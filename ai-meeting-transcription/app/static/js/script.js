@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const businessContext = document.getElementById('business-context');
     const savedCustomInstructions = document.getElementById('saved-custom-instructions');
     const saveContextButton = document.getElementById('save-context-btn');
+    const copySummaryButton = document.getElementById('copy-summary-btn'); 
 
     // --- Context Loading --- 
     function loadContext() {
@@ -113,6 +114,25 @@ document.addEventListener('DOMContentLoaded', function() {
              saveContextButton.textContent = 'Save Context Settings';
              saveContextButton.disabled = false;
         });
+    });
+
+    // --- Copy Summary Button ---  
+    copySummaryButton.addEventListener('click', function() {
+        const summaryContent = summaryText.innerText; // Get the plain text content
+        navigator.clipboard.writeText(summaryContent)
+            .then(() => {
+                // Provide feedback to the user
+                copySummaryButton.textContent = 'Copied!';
+                copySummaryButton.disabled = true;
+                setTimeout(() => {
+                    copySummaryButton.textContent = 'Copy';
+                    copySummaryButton.disabled = false;
+                }, 2000); // Reset after 2 seconds
+            })
+            .catch(err => {
+                console.error('Failed to copy text: ', err);
+                alert('Failed to copy summary. Please try again or copy manually.');
+            });
     });
 
     // Helper function to update progress
